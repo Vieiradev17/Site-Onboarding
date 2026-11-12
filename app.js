@@ -11,6 +11,13 @@ const libraryEmptyState = document.querySelector("#library-empty-state");
 const pageViews = [...document.querySelectorAll("[data-page]")];
 const taskInputs = [...document.querySelectorAll("[data-task]")];
 const storageKey = "villelatech-training-progress-v1";
+const themeStorageKey = "villelatech-training-theme-v1";
+const themeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+const themeToggle = document.querySelector(".theme-toggle");
+const profileMenu = document.querySelector("#profile-menu");
+const profileMenuButton = document.querySelector(".more-button");
+const savedThemePreference = localStorage.getItem(themeStorageKey);
+let themePreference = ["system", "light", "dark"].includes(savedThemePreference) ? savedThemePreference : "system";
 
 function createSystemCourse(systemName, description) {
   return {
@@ -232,6 +239,26 @@ let currentPage = "inicio";
 let currentQuery = "";
 let currentCourseId = null;
 let toastTimeout;
+
+function applyThemePreference() {
+  const resolvedTheme = themePreference === "system"
+    ? (themeMediaQuery.matches ? "dark" : "light")
+    : themePreference;
+  document.documentElement.dataset.theme = resolvedTheme;
+
+  const nextThemeLabel = resolvedTheme === "dark" ? "Ativar tema claro" : "Ativar tema escuro";
+  themeToggle.setAttribute("aria-label", nextThemeLabel);
+  themeToggle.title = nextThemeLabel;
+  document.querySelectorAll("[data-theme-choice]").forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.themeChoice === themePreference));
+  });
+}
+
+function setThemePreference(preference) {
+  themePreference = preference;
+  localStorage.setItem(themeStorageKey, preference);
+  applyThemePreference();
+}
 
 function readProgress() {
   const savedProgress = localStorage.getItem(storageKey);
@@ -644,8 +671,34 @@ document.querySelector(".notification-button").addEventListener("click", () => {
   showToast("Você está em dia! Suas próximas etapas estão no checklist de chegada.");
 });
 
-document.querySelector(".more-button").addEventListener("click", () => {
-  showToast("Seu progresso fica salvo neste dispositivo.");
+themeToggle.addEventListener("click", () => {
+  setThemePreference(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+});
+
+document.querySelectorAll("[data-theme-choice]").forEach((button) => {
+  button.addEventListener("click", () => setThemePreference(button.dataset.themeChoice));
+});
+
+profileMenuButton.addEventListener("click", () => {
+  profileMenu.hidden = !profileMenu.hidden;
+  profileMenuButton.setAttribute("aria-expanded", String(!profileMenu.hidden));
+});
+
+document.addEventListener("click", (event) => {
+  if (!profileMenu.hidden && !event.target.closest(".profile")) {
+    profileMenu.hidden = true;
+    profileMenuButton.setAttribute("aria-expanded", "false");
+  }
+});
+
+document.querySelector("#clear-progress").addEventListener("click", () => {
+  if (!window.confirm("Tem certeza de que deseja apagar todo o progresso salvo neste dispositivo?")) return;
+  progress = { tasks: [], completedCourses: [] };
+  saveProgress();
+  updateProgressUI();
+  profileMenu.hidden = true;
+  profileMenuButton.setAttribute("aria-expanded", "false");
+  showToast("Seu progresso foi limpo.");
 });
 
 window.addEventListener("hashchange", () => {
@@ -654,11 +707,26 @@ window.addEventListener("hashchange", () => {
 });
 
 document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !profileMenu.hidden) {
+    profileMenu.hidden = true;
+    profileMenuButton.setAttribute("aria-expanded", "false");
+    profileMenuButton.focus();
+  }
   if (event.key === "/" && document.activeElement !== searchInput && !courseDialog.open) {
     event.preventDefault();
     searchInput.focus();
   }
 });
+
+if (typeof themeMediaQuery.addEventListener === "function") {
+  themeMediaQuery.addEventListener("change", () => {
+    if (themePreference === "system") applyThemePreference();
+  });
+} else {
+  themeMediaQuery.addListener(() => {
+    if (themePreference === "system") applyThemePreference();
+  });
+}
 
 const cursorLightMedia = window.matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)");
 if (cursorLightMedia.matches) {
@@ -705,6 +773,7 @@ if (cursorLightMedia.matches) {
   });
 }
 
+applyThemePreference();
 updateProgressUI();
 renderResources();
 renderRoute(location.hash || "#/inicio");
