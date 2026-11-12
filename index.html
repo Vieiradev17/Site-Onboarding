@@ -67,7 +67,18 @@
           <div class="profile">
             <div class="avatar" aria-hidden="true">VT</div>
             <div class="profile-copy"><strong>Visitante</strong><span>Time VillelaTech</span></div>
-            <button class="more-button" type="button" aria-label="Mais opções">···</button>
+            <button class="more-button" type="button" aria-label="Abrir opções do perfil" aria-controls="profile-menu" aria-expanded="false">···</button>
+            <div class="profile-menu" id="profile-menu" aria-label="Opções do perfil" hidden>
+              <span class="profile-menu-label">APARÊNCIA</span>
+              <div class="theme-options" role="group" aria-label="Escolher tema">
+                <button type="button" data-theme-choice="system" aria-pressed="true">Sistema</button>
+                <button type="button" data-theme-choice="light" aria-pressed="false">Claro</button>
+                <button type="button" data-theme-choice="dark" aria-pressed="false">Escuro</button>
+              </div>
+              <a href="#/ajuda">Central de ajuda <span aria-hidden="true">↗</span></a>
+              <button class="clear-progress-button" id="clear-progress" type="button">Limpar meu progresso</button>
+              <small>Seu progresso fica salvo neste dispositivo.</small>
+            </div>
           </div>
         </div>
       </aside>
@@ -81,6 +92,10 @@
               <input id="course-search" type="search" placeholder="Buscar cursos e materiais..." aria-label="Buscar cursos e materiais" />
               <kbd>/</kbd>
             </label>
+            <button class="icon-button theme-toggle" type="button" aria-label="Ativar tema escuro" title="Ativar tema escuro">
+              <svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.3 8.3 0 0 1 8.9 3.8 8.4 8.4 0 1 0 20.2 15.1Z"/></svg>
+              <svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+            </button>
             <button class="icon-button notification-button" type="button" aria-label="Notificações">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></svg>
               <span class="notification-dot"></span>
