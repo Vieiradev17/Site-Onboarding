@@ -815,3 +815,181 @@ body.cursor-light-active:not(.cursor-on-card)::before {
   .resource-state { font-size: 6px; }
   .resource-open-button { font-size: 7px; padding: 5px 3px; }
 }
+
+.profile { position: relative; }
+.profile-menu {
+  background: white;
+  border: 1px solid #e6edf2;
+  border-radius: 10px;
+  bottom: calc(100% + 10px);
+  box-shadow: 0 12px 32px rgba(27,55,72,.16);
+  display: grid;
+  gap: 9px;
+  padding: 13px;
+  position: absolute;
+  right: 0;
+  width: 244px;
+  max-width: 100%;
+  z-index: 6;
+}
+.profile-menu[hidden] { display: none; }
+.profile-menu-label { color: #8b9aa3; font-size: 8px; font-weight: 700; letter-spacing: 1px; }
+.theme-options { background: #f2f6f9; border-radius: 7px; display: grid; gap: 3px; grid-template-columns: repeat(3, 1fr); padding: 3px; }
+.theme-options button { background: transparent; border: 0; border-radius: 5px; color: #6f808b; font-size: 8px; padding: 7px 4px; }
+.theme-options button[aria-pressed="true"] { background: white; box-shadow: 0 1px 4px rgba(33,65,84,.12); color: #397fae; font-weight: 700; }
+.profile-menu > a,
+.clear-progress-button { background: transparent; border: 0; border-radius: 6px; color: #536873; font-size: 9px; padding: 7px; text-align: left; }
+.profile-menu > a { display: flex; justify-content: space-between; }
+.profile-menu > a:hover,
+.clear-progress-button:hover { background: #f2f7fa; }
+.profile-menu > a span { color: #7799ad; }
+.clear-progress-button { color: #a35b54; }
+.profile-menu > small { border-top: 1px solid #edf1f3; color: #8b979e; font-size: 8px; line-height: 1.5; padding-top: 8px; }
+.theme-toggle .theme-icon-sun { display: none; }
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  background: #111920;
+  color: #dce7ed;
+  --ink: #dce7ed;
+  --muted: #9aabb5;
+  --line: #2b3943;
+}
+:root[data-theme="dark"] body { background: #111920; color: #dce7ed; }
+:root[data-theme="dark"] .sidebar,
+:root[data-theme="dark"] .stat-card,
+:root[data-theme="dark"] .course-card,
+:root[data-theme="dark"] .resource-card,
+:root[data-theme="dark"] .first-steps,
+:root[data-theme="dark"] .home-shortcut,
+:root[data-theme="dark"] .platform-card,
+:root[data-theme="dark"] .help-topic-grid a,
+:root[data-theme="dark"] .course-dialog,
+:root[data-theme="dark"] .profile-menu,
+:root[data-theme="dark"] .resource-card-item { background-color: #1b2730; border-color: #2b3a44; color: #dce7ed; }
+:root[data-theme="dark"] .topbar { background: rgba(23,34,42,.94); border-color: #2b3943; }
+:root[data-theme="dark"] .mobile-nav { background: rgba(23,34,42,.97); border-color: #2b3943; }
+:root[data-theme="dark"] .brand-name,
+:root[data-theme="dark"] .breadcrumb strong,
+:root[data-theme="dark"] .stat-card strong,
+:root[data-theme="dark"] .course-info h3,
+:root[data-theme="dark"] h2,
+:root[data-theme="dark"] .task-copy strong,
+:root[data-theme="dark"] .resource-copy strong,
+:root[data-theme="dark"] .resource-card-copy > strong,
+:root[data-theme="dark"] .platform-card-copy strong,
+:root[data-theme="dark"] .help-topic-grid strong,
+:root[data-theme="dark"] .help-page > h2,
+:root[data-theme="dark"] .profile-copy strong { color: #dce7ed; }
+:root[data-theme="dark"] .brand-name span,
+:root[data-theme="dark"] .breadcrumb,
+:root[data-theme="dark"] .section-kicker,
+:root[data-theme="dark"] .course-meta,
+:root[data-theme="dark"] .course-info > p,
+:root[data-theme="dark"] .duration,
+:root[data-theme="dark"] .stat-card p,
+:root[data-theme="dark"] .stat-note,
+:root[data-theme="dark"] .task-copy small,
+:root[data-theme="dark"] .task-tag,
+:root[data-theme="dark"] .resource-copy > span,
+:root[data-theme="dark"] .resource-card-copy > small,
+:root[data-theme="dark"] .platform-card-copy > span,
+:root[data-theme="dark"] .platform-card-copy small,
+:root[data-theme="dark"] .platform-card-count,
+:root[data-theme="dark"] .help-page-intro,
+:root[data-theme="dark"] .help-topic-grid small,
+:root[data-theme="dark"] .footer,
+:root[data-theme="dark"] .courses-total { color: #9aabb5; }
+:root[data-theme="dark"] .nav-link { color: #a4b2bb; }
+:root[data-theme="dark"] .nav-link:hover,
+:root[data-theme="dark"] .nav-link.active { background: #243b4b; color: #8ec7eb; }
+:root[data-theme="dark"] .nav-count,
+:root[data-theme="dark"] .search-box,
+:root[data-theme="dark"] .icon-button,
+:root[data-theme="dark"] kbd { background: #202e38; border-color: #34444f; color: #a8b7c0; }
+:root[data-theme="dark"] .search-box input { color: #dce7ed; }
+:root[data-theme="dark"] .help-card,
+:root[data-theme="dark"] .library-context,
+:root[data-theme="dark"] .content-note { background: #202d36; border-color: #2b3b45; color: #aab8c0; }
+:root[data-theme="dark"] .help-card strong,
+:root[data-theme="dark"] .dialog-content h3 { color: #dce7ed; }
+:root[data-theme="dark"] .help-card p,
+:root[data-theme="dark"] .library-context div span,
+:root[data-theme="dark"] .library-intro,
+:root[data-theme="dark"] .help-contact-card small { color: #a0afb8; }
+:root[data-theme="dark"] .profile { border-color: #2b3943; }
+:root[data-theme="dark"] .avatar { background: #263d4c; color: #9ed0ef; }
+:root[data-theme="dark"] .more-button { color: #b2c0c8; }
+:root[data-theme="dark"] .theme-options { background: #15212a; }
+:root[data-theme="dark"] .theme-options button { color: #aab8c0; }
+:root[data-theme="dark"] .theme-options button[aria-pressed="true"] { background: #304957; color: #b2dcf5; }
+:root[data-theme="dark"] .profile-menu > a,
+:root[data-theme="dark"] .clear-progress-button { color: #c1cdd3; }
+:root[data-theme="dark"] .profile-menu > a:hover,
+:root[data-theme="dark"] .clear-progress-button:hover { background: #263741; }
+:root[data-theme="dark"] .profile-menu > small { border-color: #34434c; color: #9aabb5; }
+:root[data-theme="dark"] .theme-toggle .theme-icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .theme-icon-sun { display: block; }
+:root[data-theme="dark"] .welcome-row { background: #1b2b35; border-color: #2b3e49; }
+:root[data-theme="dark"] .welcome-copy,
+:root[data-theme="dark"] .eyebrow { color: #a6bac5; }
+:root[data-theme="dark"] h1 { color: #d6e8f1; }
+:root[data-theme="dark"] h1 span { color: #8ec7eb; }
+:root[data-theme="dark"] .first-steps { box-shadow: none; }
+:root[data-theme="dark"] .quick-help { background: linear-gradient(145deg, #1d303b, #1a2a34); border-color: #2d424d; }
+:root[data-theme="dark"] .quick-help h3,
+:root[data-theme="dark"] .quote-card p { color: #c4dfec; }
+:root[data-theme="dark"] .quick-help > p:not(.section-kicker),
+:root[data-theme="dark"] .help-response { color: #a0b2bd; }
+:root[data-theme="dark"] .quote-card { background: #1c3039; border-color: #2b414a; }
+:root[data-theme="dark"] .filter-chip,
+:root[data-theme="dark"] .library-filter-chip { background: #1b2730; border-color: #33434d; color: #aab8c0; }
+:root[data-theme="dark"] .filter-chip.active,
+:root[data-theme="dark"] .library-filter-chip.active { background: #243b4b; border-color: #304b5a; color: #9bd0ef; }
+:root[data-theme="dark"] .course-footer,
+:root[data-theme="dark"] .lesson-list li,
+:root[data-theme="dark"] .dialog-footer { border-color: #2b3943; }
+:root[data-theme="dark"] .course-complete .course-meta::after { background: #263d35; color: #9bd0a7; }
+:root[data-theme="dark"] .dialog-header { background: linear-gradient(135deg, #1d3039, #202c34); }
+:root[data-theme="dark"] .dialog-header h2,
+:root[data-theme="dark"] .lesson-list strong { color: #dce7ed; }
+:root[data-theme="dark"] .dialog-header > p,
+:root[data-theme="dark"] .dialog-status,
+:root[data-theme="dark"] .dialog-meta,
+:root[data-theme="dark"] .lesson-list small,
+:root[data-theme="dark"] .lesson-list li > span:last-child,
+:root[data-theme="dark"] .content-note { color: #a4b4bd; }
+:root[data-theme="dark"] .dialog-category { background: #2a414b; color: #a5d3eb; }
+:root[data-theme="dark"] .dialog-close { background: #293943; color: #dce7ed; }
+:root[data-theme="dark"] .platform-page-heading,
+:root[data-theme="dark"] .help-contact-card { background: linear-gradient(110deg, #1c303b, #1b2932); border-color: #2b404c; }
+:root[data-theme="dark"] .platform-card-copy strong,
+:root[data-theme="dark"] .material-group-heading h2,
+:root[data-theme="dark"] .help-contact-card strong,
+:root[data-theme="dark"] .help-topic-grid strong,
+:root[data-theme="dark"] .home-shortcut strong { color: #c5dce8; }
+:root[data-theme="dark"] .platform-card-copy > span,
+:root[data-theme="dark"] .material-group-heading p,
+:root[data-theme="dark"] .platform-page-heading p:last-child,
+:root[data-theme="dark"] .help-topic-grid small,
+:root[data-theme="dark"] .library-note { color: #a2b3bd; }
+:root[data-theme="dark"] .platform-page-total,
+:root[data-theme="dark"] .platform-card-icon,
+:root[data-theme="dark"] .help-contact-icon,
+:root[data-theme="dark"] .resource-type-icon { background-color: #263843; border-color: #344853; }
+:root[data-theme="dark"] .platform-card.platform-orientations:hover { background: #203541; }
+:root[data-theme="dark"] .library-section { border-color: #2b3943; }
+:root[data-theme="dark"] .library-note { background: #1c2d37; }
+:root[data-theme="dark"] .resource-kind,
+:root[data-theme="dark"] .resource-state.in-production { background: #293740; color: #a4b4bd; }
+:root[data-theme="dark"] .empty-state { background: #1b2730; border-color: #2b3943; color: #aab8c0; }
+:root[data-theme="dark"] .search-results-heading { color: #a4b4bd; }
+:root[data-theme="dark"] .mobile-nav a { color: #a0afb8; }
+:root[data-theme="dark"] .mobile-nav a.active { background: #243b4b; color: #9bd0ef; }
+:root[data-theme="dark"] .course-dialog::backdrop { background: rgba(4,10,14,.72); }
+:root[data-theme="dark"] .toast { background: #315d7a; color: white; }
+:root[data-theme="dark"] .notification-dot { border-color: #202e38; }
+:root[data-theme="dark"] .library-total { background: #253946; color: #a8c9dd; }
+:root[data-theme="dark"] .task-check { border-color: #526570; }
+:root[data-theme="dark"] .checklist-item:hover { background: #202e38; }
+:root[data-theme="dark"] .task-tag { background: #26353e; }
